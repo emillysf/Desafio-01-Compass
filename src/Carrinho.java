@@ -97,7 +97,7 @@ public class Carrinho {
                         setNome(produtoSelecionado.getNome());
                         setPreco(produtoSelecionado.getPreco());
                         setQuantidade(quantidade);
-                        setTotal(produtoSelecionado.getPreco() * quantidade);
+                        setTotal(produtoSelecionado.getPreco() * quantidade); // Correção aqui
 
                         String sql = "INSERT INTO Carrinho (IdProd, Quantidade) VALUES (" + produtoSelecionado.getId() + ", " + quantidade + ")";
                         con.executeSQL(sql);
@@ -118,12 +118,12 @@ public class Carrinho {
         String sql = "SELECT c.IdProd, p.nome, p.preco, c.quantidade FROM produtos p INNER JOIN carrinho c ON p.Id = c.IdProd";
         ResultSet resultado = null;
         double valorTotal = 0.0;
+        StringBuilder sb = new StringBuilder();
 
         try {
             resultado = con.RetornarResultset(sql);
 
-            StringBuilder sb = new StringBuilder();
-            sb.append("Itens do Carrinho:\n");
+            sb.append("Itens do Carrinho:\n\n");
 
             while (resultado.next()) {
                 int idProduto = resultado.getInt("IdProd");

@@ -13,11 +13,15 @@ public class Main {
         int op;
         //primeira telinha de opções
         do {
-            func = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Digite a opção:\n" +
-                    " 1- Gestão de Produtos\n" +
-                    " 2- Compras\n" +
-                    " 0- Sair"));
+            try {
+                func = Integer.parseInt(JOptionPane.showInputDialog(
+                        "Digite a opção:\n" +
+                                " 1- Gestão de Produtos\n" +
+                                " 2- Compras\n" +
+                                " 0- Sair"));
+            } catch (NumberFormatException e) {
+                func = 0;
+            }
             switch (func){
                 case 1:
                         do {
@@ -61,13 +65,17 @@ public class Main {
                     break;
                 case 2:
                     do {
-                        op = Integer.parseInt(JOptionPane.showInputDialog("""
-                                Digite a opção:
+                        try {
+                            op = Integer.parseInt(JOptionPane.showInputDialog("""
+                                 Digite a opção:
                                  1- Comprar produto
                                  2- Itens no meu carrinho
                                  3- Remover itens do carrinho
                                  4- Concluir compra 
                                  0- Sair"""));
+                        } catch (NumberFormatException e) {
+                            op = 0;
+                        }
                         switch(op) {
                             case 1:
                                 car.AdicionarItem();
