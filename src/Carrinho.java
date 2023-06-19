@@ -75,7 +75,7 @@ public class Carrinho {
         List<Produtos> listaProdutos = produtos.listarProdutos();
         JComboBox<String> comboBox = new JComboBox<>();
         for (Produtos produto : listaProdutos) {
-            comboBox.addItem("ID: " + produto.getId() + " | Nome: " + produto.getNome());
+            comboBox.addItem("ID: " + produto.getId() + " | Nome: " + produto.getNome() + " | " + produto.getPreco());
         }
         Object[] message = {"Produtos Disponíveis:", comboBox};
         int option = JOptionPane.showConfirmDialog(null, message, "Adicionar Item", JOptionPane.OK_CANCEL_OPTION);
