@@ -227,22 +227,29 @@ public class Carrinho {
 
             limparCarrinho();
 
-            JOptionPane.showMessageDialog(null, "Compra concluída com sucesso!");
+            JOptionPane.showMessageDialog(null, "Compra concluída com sucesso!\nValor Total: " + valorTotal);
         } else {
-            JOptionPane.showMessageDialog(null, "Compra cancelada!");
+            JOptionPane.showMessageDialog(null, "Compra cancelada!\nValor Total: " + valorTotal);
         }
     }
 
     private double calcularValorTotalCarrinho() {
-        String sql = "SELECT SUM(p.preco * c.quantidade) AS valorTotal FROM produtos p INNER JOIN carrinho c ON p.Id = c.IdProd";
+        String sql = "SELECT c.IdProd, p.nome, p.preco, c.quantidade FROM produtos p INNER JOIN carrinho c ON p.Id = c.IdProd";
         ResultSet resultado = null;
         double valorTotal = 0.0;
 
         try {
             resultado = con.RetornarResultset(sql);
 
-            if (resultado.next()) {
-                valorTotal = resultado.getDouble("valorTotal");
+            while (resultado.next()) {
+                int quantidade = resultado.getInt("quantidade");
+                double preco = resultado.getDouble("preco");
+
+                // Calcular o valor do item no carrinho
+                double valorItem = preco * quantidade;
+
+                // Somar ao valor total
+                valorTotal += valorItem;
             }
         } catch (SQLException e) {
             e.printStackTrace();
