@@ -60,6 +60,7 @@ public class Produtos {
         this.Quantidade = quantidade;
     }
 
+    //Cadastrar os produtos
     public void cadastrarProduto() {
         try {
             String idStr = JOptionPane.showInputDialog("Informe o ID do produto:");

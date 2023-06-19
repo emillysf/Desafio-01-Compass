@@ -11,7 +11,7 @@ public class Main {
 
         int func;
         int op;
-
+        //primeira telinha de opções
         do {
             func = Integer.parseInt(JOptionPane.showInputDialog(
                     "Digite a opção:\n" +

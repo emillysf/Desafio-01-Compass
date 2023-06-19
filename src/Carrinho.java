@@ -229,7 +229,7 @@ public class Carrinho {
 
             JOptionPane.showMessageDialog(null, "Compra concluída com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(null, "Compra cancelada.");
+            JOptionPane.showMessageDialog(null, "Compra cancelada!");
         }
     }
 

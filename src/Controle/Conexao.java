@@ -59,7 +59,7 @@ public class Conexao {
             statement = (Statement) conexao.createStatement();
 
             statement.execute(sql);
-            //desconecta();
+            //desconecta()
         }catch(SQLException sqle){
             JOptionPane.showMessageDialog(null, "Driver não encontrado1" + sqle.getMessage());
         }
